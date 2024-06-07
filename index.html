@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <h1>JavaScript vanilla - Exercícios e Avaliações</h1>
+        <h2>Manipulação de Elementos HTML com JavaScript</h2>
+            <h3>Exercício 1 - Selecionando e Modificando Elementos</h3>
+                <p>Crie um botão que, ao ser clicado, altera o texto de um parágrafo para "Texto alterado via JavaScript".</p>
+                    <button id="myButton1">Clique aqui para modificar o texto abaixo</button>
+                    <div id="myDiv">Texto Original</div>
+                <p><br></p>
+                <script>
+                    //Exercício 1
+                    const button1 = document.getElementById('myButton1');
+                    button1.addEventListener('click', function() {
+                    const divElement = document.getElementById('myDiv');
+                    divElement.innerText = 'Texto modificado'; 
+                });                           
+                </script>            
+            
+            <h3>Exercício 2 - Criando e Adicionando Elementos</h3>
+                <p>Crie um botão que, ao ser clicado, cria dinamicamente uma lista (ul) com três itens (li) usando JavaScript.</p>
+                    <button id="myButton2">Clique aqui para criar uma lista</button>    
+                    <div id="lista"></div>
+                <p><br></p>
+                
+                <script>    
+                    //Exercício 2
+                    const button2 = document.getElementById('myButton2');
+                    button2.addEventListener('click', function() {
+                    const parentElement = document.getElementById('lista');
+                    const newElement = document.createElement('ul');
+                    parentElement.appendChild(newElement);  
+                    
+                    for (let index = 1; index < 4; index++) {
+                        const novoItem = document.createElement('li');
+                        novoItem.textContent = 'Item '+ index;
+                        newElement.appendChild(novoItem);
+                    }
+                    
+                /* 
+                    OUTRA FORMA:    
+                    novoItem = null;
+                    novoItem = document.createElement('li');
+                    novoItem.textContent = 'Item 2';
+                    newElement.appendChild(novoItem); 
+
+                    novoItem = null;
+                    novoItem = document.createElement('li');
+                    novoItem.textContent = 'Item 3';
+                    newElement.appendChild(novoItem); */
+                    });
+                </script>
+            
+            <h3>Exercício 3 - Manipulando Estilos e Classes</h3>
+                <p>Crie um botão que, ao ser clicado, altera o estilo de um elemento para mudar sua cor de fundo e aumentar sua largura.</p>
+                    <button id="myButton3">Clique aqui para modificar o estilo do elemento abaixo</button>  
+                    <p><br></p>
+                    <div id="myDiv3" style="width: 200px; height: 100px; background-color: red; text-align: center; line-height: 100px; vertical-align: middle; padding: 4px;">Vermelho</div>
+                    <p><br></p>
+
+                    <script>
+                        //Exercício 3
+                        const button3 = document.getElementById('myButton3');
+                        button3.addEventListener('click', function() {
+                        const divElement = document.getElementById('myDiv3');
+                        divElement.style.backgroundColor = 'blue';
+                        divElement.style.width = '300px';
+                        divElement.innerText = 'AZUL E MAIS LARGO';
+                        });
+                    </script>
+
+            <h3>Exercício 4 - Acessando e Modificando Formulários</h3>
+                <p>Crie um formulário com um campo de entrada de texto e um botão. Ao clicar no botão, exiba o valor do campo de entrada em um parágrafo</p>
+                <h4>Preencha o campo abaixo</h4>    
+                    <form id="myForm">
+                        <input type="text" id="username" placeholder="Nome de usuário">
+                        <button id="myButton4" type="submit">Enviar</button>
+                        <div id="myDiv4"></div>                       
+                    </form>
+                <p><br></p>
+                  
+                    <script>
+                    //Exercício 4
+                    const button4 = document.getElementById('myButton4');
+                    button4.addEventListener('click', function() {
+                    event.preventDefault();
+                    const divElement4 = document.getElementById('myDiv4');
+                    divElement4.textContent = username.value;
+                    /* const parentElement4 = document.getElementById('myDiv4');
+                    const newElement4 = document.createElement('p');
+                    parentElement4.appendChild(newElement4); */
+                    }); 
+                    </script>
+
+            <h3>Exercício 5 - Eventos de Mouse</h3>
+                <p>Crie um elemento div e faça com que, ao passar o mouse sobre ele, o fundo mude de cor.</p>
+                <div id="myDiv5" style="width: 200px; height: 100px; background-color: yellow; text-align: center; line-height: 50px; vertical-align: middle; padding: 4px;">
+                    Passe aqui o mouse para ver a mudança de cor</div>
+                    <p><br></p>
+                    
+                    <script>
+                    //Exercício 5
+                    const divElement = document.getElementById('myDiv5');
+
+                    divElement.addEventListener('mouseover', function() {
+                        divElement.style.backgroundColor = 'blue';
+                    });
+
+                    divElement.addEventListener('mouseout', function() {
+                        divElement.style.backgroundColor = 'yellow';
+                    });
+                    </script>
+
+            <h3>Exercício 6 - Eventos de Teclado</h3>
+                <p>Crie um campo de entrada de texto e um parágrafo. Faça com que, ao digitar no campo de entrada, o texto digitado seja exibido no parágrafo.</p>
+                <form id="myForm6">
+                    <input type="text" id="myInput" placeholder="Digite aqui">
+                    <div id="myDiv6"></div>                       
+                </form>
+            <p><br></p>
+                    <script>
+                    //Exercício 6
+                        const inputElement = document.getElementById('myInput');
+                        var textDig="";
+                        inputElement.addEventListener('keydown', function(event) {
+                            //event.preventDefault();
+                            const divElement6 = document.getElementById('myDiv6');
+                            textDig+=event.key;
+                            divElement6.textContent=textDig
+                        });
+
+
+                    </script>  
+                    
+            <h3>Exercício 7 - Delegação de Eventos</h3>
+                <p>Crie uma lista não ordenada (ul) com cinco itens (li). Ao clicar em um item, altere sua cor de fundo.</p>
+                <ul id="myList" style="width: 200px; background-color: grey; text-align: center; line-height: 30px; vertical-align: middle; padding: 4px;">
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                    <li>Item 5</li>
+                </ul>
+
+                <script>
+                //Exercício 7 CONCLUIR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    const list = document.getElementById('myList');
+                    for (let index = 0; index < array.length; index++) {
+                        //const element = array[index];
+                        const listX = document.getElementsByTagName('li');
+                        listX.addEventListener('click', function(event) {
+                        listX.style.backgroundColor = 'blue';
+                        
+                    })}
+                
+                    /* const list = document.getElementById('myList');
+                    list.addEventListener('click', function(event) {
+                        list.style.backgroundColor = 'blue';
+                    }); */
+
+                </script>
+</body>
+</html>
