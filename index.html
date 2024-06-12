@@ -150,21 +150,24 @@
                 </ul>
 
                 <script>
-                //Exercício 7 CONCLUIR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    const list = document.getElementById('myList');
+                    //1a versão (feita manualmente)
+                    /* const list = document.getElementById('myList');
                     for (let index = 0; index < array.length; index++) {
                         //const element = array[index];
                         const listX = document.getElementsByTagName('li');
                         listX.addEventListener('click', function(event) {
                         listX.style.backgroundColor = 'blue';
-                        
-                    })}
-                
-                    /* const list = document.getElementById('myList');
-                    list.addEventListener('click', function(event) {
-                        list.style.backgroundColor = 'blue';
-                    }); */
+                        })} */
 
+                    //2a versão (corrigida pelo ChatGpt)
+                    const list = document.getElementById('myList');
+                    const listItems = list.getElementsByTagName('li');
+
+                    for (let index = 0; index < listItems.length; index++) {
+                        listItems[index].addEventListener('click', function(event) {
+                            event.target.style.backgroundColor = 'blue';
+                        });
+                    }
                 </script>
 </body>
 </html>
